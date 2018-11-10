@@ -9,10 +9,13 @@
 // @require       http://code.jquery.com/jquery-3.3.1.min.js
 // ==/UserScript==
 
-
 $( "button.btn-primary" ).click(function() {
-    setTimeout(function(){ $( "input.btn-primary" ).click(); },500);
-
+    var checkExist = setInterval(function() {
+    if ($('input.btn-primary').length) {
+        $( "input.btn-primary" ).click();
+        clearInterval(checkExist);
+       }
+    }, 100);
 });
 
 $( "button.btn-primary" ).click(function() {
